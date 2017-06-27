@@ -15,6 +15,7 @@
 
 - (void)addContact:(Contact*)newContact;
 - (Contact*)showContact:(NSString*)idNumber;
+- (Contact*)findContact:(NSString*)usernameInput;
 - (NSString*)description;
 
 @end

@@ -26,16 +26,37 @@
 }
 
 // stretch
-- (Contact*)showContact:(NSString*)idNumber
+- (Contact*)showContact:(NSString*)usernameInput
 {
+    NSArray *inputs = [usernameInput componentsSeparatedByString:@" "];
+    NSString *show = [inputs objectAtIndex:1];
+    
     Contact *showContact = [[Contact alloc]init];
     
     for (Contact *lookupContact in self.contacts)
     {
-        if ([lookupContact.idNumber isEqualToString:idNumber])
+        if ([lookupContact.idNumber isEqualToString:show])
         {
             showContact = lookupContact;
             return showContact;
+        }
+    }
+    return nil;
+}
+
+- (Contact*)findContact:(NSString*)usernameInput
+{
+    NSArray *inputs = [usernameInput componentsSeparatedByString:@" "];
+    NSString *find = [inputs objectAtIndex:1];
+    
+    Contact *findContact = [[Contact alloc]init];
+    
+    for (Contact *lookupContact in self.contacts)
+    {
+        if ([lookupContact.name isEqualToString:find])
+        {
+            findContact = lookupContact;
+            return findContact;
         }
     }
     return nil;

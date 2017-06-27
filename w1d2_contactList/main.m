@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         while (loopOn)
         {
             InputCollector *inputCollector = [[InputCollector alloc]init];
-            NSString *usernameInput = [inputCollector inputForPrompt:@"Enter your selection\n> new\n> list\n> show\n> quit\n"];
+            NSString *usernameInput = [inputCollector inputForPrompt:@"Enter your selection\n> new\n> list\n> show (include ID number)\n> find (include name)\n> quit\n"];
             //NSLog(@"%@", usernameInput);
             
             if ([usernameInput isEqualToString:@"quit"])
@@ -51,14 +51,26 @@ int main(int argc, const char * argv[]) {
                 NSLog(@"%@", [contactList description]);
             }
             
-            else if ([usernameInput isEqualToString:@"show"])
+            else if ([usernameInput hasPrefix:@"show"])
             {
-                NSString *showID = [inputCollector inputForPrompt:@"Enter contact ID:"];
-                Contact *showContact = [contactList showContact:showID];
+                Contact *showContact = [contactList showContact:usernameInput];
                 
                 if (showContact)
                 {
                     NSLog(@"%@", [showContact description]);
+                }
+                else
+                {
+                    NSLog(@"Contact not found");
+                }
+            }
+            
+            else if([usernameInput hasPrefix:@"find"])
+            {
+                Contact *findContact = [contactList findContact:usernameInput];
+                if (findContact)
+                {
+                    NSLog(@"%@", [findContact description]);
                 }
                 else
                 {

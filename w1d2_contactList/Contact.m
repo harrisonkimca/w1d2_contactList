@@ -17,4 +17,27 @@
     return contactString;
 }
 
+// stretch ***** below to allow the NSSet check objects to reject duplicates
+- (BOOL)isEqual:(id)object
+{
+    Contact *contact = (Contact*)object;
+    if ([self.name isEqualToString:contact.name] || [self.email isEqualToString:contact.email])
+    {
+        NSLog(@"Name or email already exists");
+        return YES;
+    }
+    else
+    {
+        NSLog(@"New contact added");
+        return NO;
+    }
+}
+
+// stretch ***** also need to change the hash used by NSSet *****
+- (NSUInteger)hash
+{
+    return ([self.name intValue] || [self.email intValue]);
+}
+
+
 @end

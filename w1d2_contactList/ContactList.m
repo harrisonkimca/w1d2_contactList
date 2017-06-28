@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _contacts = [[NSMutableArray alloc]init];
+        _contacts = [[NSMutableSet alloc]init];
     }
     return self;
 }

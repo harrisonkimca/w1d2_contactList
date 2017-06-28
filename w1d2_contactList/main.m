@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
                 contact.name = newName;
                 contact.email = newEmail;
                 [contactList addContact:contact];
-                NSLog(@"New contacted added");
+                //NSLog(@"New contacted added");
                 //NSLog(@"%@", contactList);
             }
             

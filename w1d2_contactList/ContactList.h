@@ -11,7 +11,7 @@
 
 @interface ContactList : NSObject
 
-@property (strong, nonatomic) NSMutableArray *contacts;
+@property (strong, nonatomic) NSMutableSet *contacts;
 
 - (void)addContact:(Contact*)newContact;
 - (Contact*)showContact:(NSString*)idNumber;
